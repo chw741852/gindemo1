@@ -5,9 +5,11 @@ go 1.17
 require (
 	github.com/gin-gonic/gin v1.7.7
 	go.uber.org/zap v1.20.0
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 )
 
 require (
+	github.com/BurntSushi/toml v0.4.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
