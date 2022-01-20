@@ -1,3 +1,10 @@
 port: 8080
 domain: https://www.baidu.com
-dev_domain: https://www.google.com
+Mysql:
+  addr: 127.0.0.1:3306
+  username: root
+  password: root
+  db: test
+  max_idle_conn: 10
+  max_open_conn: 5
+  conn_max_life_time: 10

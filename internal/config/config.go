@@ -1,11 +1,8 @@
 package config
 
 import (
-	"fmt"
-	"os"
-
-	"github.com/spf13/viper"
 	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/viper"
 )
 
 var C config
@@ -27,13 +24,7 @@ func initConfig(path string) error {
 		viper.SetConfigFile(path)
 	}
 	viper.SetConfigType("yaml")
-	// viper.AutomaticEnv()
-	env := os.Getenv("GO_ENV")
-	if env != "" {
-		viper.SetEnvPrefix(env)
-	} else {
-		viper.SetEnvPrefix("dev")
-	}
+	viper.AutomaticEnv()
 
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -50,13 +41,22 @@ func initConfig(path string) error {
 
 func watchConfig() {
 	viper.OnConfigChange(func(e fsnotify.Event) {
-		fmt.Println("Config file changed:", e.Name)
 		viper.Unmarshal(&C)
 	})
 	viper.WatchConfig()
 }
 
 type config struct {
-	Port int
+	Port uint32
 	Domain string
+	Mysql mysql
+}
+type mysql struct {
+	Addr string
+	username string
+	password string
+	db string
+	max_idle_conn uint32
+	max_open_conn uint32
+	conn_max_life_time uint32
 }

@@ -12,5 +12,5 @@ import (
 func Hello(c *gin.Context) {
 	// msg := "Hello World!"
 	fmt.Println(c.MustGet("example"))	// example参数来自middlerware
-	c.String(http.StatusOK, config.C.Domain)
+	c.String(http.StatusOK, config.C.Mysql.Addr)
 }
