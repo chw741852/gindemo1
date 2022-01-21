@@ -5,7 +5,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-var C config
+var Conf Config
 
 func Init(configPath string) error {
 	err := initConfig(configPath)
@@ -30,7 +30,7 @@ func initConfig(path string) error {
 	if err != nil {
 		return err
 	}
-	err2 := viper.Unmarshal(&C)
+	err2 := viper.Unmarshal(&Conf)
 	if err != nil {
 		return err2
 	}
@@ -41,22 +41,22 @@ func initConfig(path string) error {
 
 func watchConfig() {
 	viper.OnConfigChange(func(e fsnotify.Event) {
-		viper.Unmarshal(&C)
+		viper.Unmarshal(&Conf)
 	})
 	viper.WatchConfig()
 }
 
-type config struct {
+type Config struct {
 	Port uint32
 	Domain string
 	Mysql mysql
 }
 type mysql struct {
 	Addr string
-	username string
-	password string
-	db string
-	max_idle_conn uint32
-	max_open_conn uint32
-	conn_max_life_time uint32
+	Username string
+	Password string
+	DB string
+	MaxIdleConns int
+	MaxOpenConns int
+	ConnMaxLifeTime int
 }

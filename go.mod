@@ -12,4 +12,6 @@ require (
 	github.com/BurntSushi/toml v0.4.1 // indirect
 	github.com/fsnotify/fsnotify v1.5.1
 	github.com/spf13/viper v1.10.1
+	gorm.io/driver/mysql v1.2.3
+	gorm.io/gorm v1.22.5
 )

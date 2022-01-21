@@ -4,7 +4,7 @@ Mysql:
   addr: 127.0.0.1:3306
   username: root
   password: root
-  db: test
-  max_idle_conn: 10
-  max_open_conn: 5
+  db: chw
+  max_idle_conns: 10
+  max_open_conns: 5
   conn_max_life_time: 10
